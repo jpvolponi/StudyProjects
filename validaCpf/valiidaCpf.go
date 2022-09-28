@@ -8,8 +8,8 @@ func ValidaCpf() bool {
 	var resp bool
 	fmt.Println("\nDigite o CPF.")
 	fmt.Scan(&cpf)
-	//verifica primeiro dígito
 
+	//calculo primeiro dígito
 	cpfInt, erro := ConvInt(cpf)
 	if erro != nil {
 		fmt.Println(erro)
@@ -26,26 +26,22 @@ func ValidaCpf() bool {
 			k = 11
 			for i = 0; i < 9; i++ {
 				sum += cpfInt[i] * j
-				//fmt.Printf("DEBUG: %d * %d = %d\n", cpfInt[i], j, sum)
 				j--
 			}
-			//verifica segundo digito
+			primeiroDigito := sum * 10 % 11
+
+			//calculo segundo digito
 			for l = 0; l < 10; l++ {
 				sum2 += cpfInt[l] * k
-				//fmt.Printf("DEBUG: %d * %d = %d\n", cpfInt[l], k, sum2)
 				k--
 			}
-		}
-		primeiroDigito := sum * 10 % 11
-		segundoDigito := sum2 * 10 % 11
-		//fmt.Println(sum)
-		//fmt.Println(primeiroDigito)
-		//fmt.Println(segundoDigito)
-
-		if primeiroDigito == cpfInt[9] && segundoDigito == cpfInt[10] {
-			resp = true
-		} else {
-			resp = false
+			segundoDigito := sum2 * 10 % 11
+			//verifica digitos
+			if primeiroDigito == cpfInt[9] && segundoDigito == cpfInt[10] {
+				resp = true
+			} else {
+				resp = false
+			}
 		}
 	}
 	return resp
