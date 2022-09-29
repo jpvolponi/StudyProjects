@@ -3,20 +3,20 @@ package main
 import "fmt"
 
 func CalculaPrimeiroDigito(cpf []int32) int32 {
-	var i, sum int32
+	var sum int32
 	var j int32 = 10
-	for i = 0; i < 9; i++ {
-		sum += cpf[i] * j
+	for _, v := range cpf[0:9] {
+		sum += v * j
 		j--
 	}
 	primeiroDigito := sum * 10 % 11
 	return primeiroDigito
 }
 func CalculaSegundoDigito(cpf []int32) int32 {
-	var i, sum int32
+	var sum int32
 	var j int32 = 11
-	for i = 0; i < 10; i++ {
-		sum += cpf[i] * j
+	for _, v := range cpf[0:10] {
+		sum += v * j
 		j--
 	}
 	segundoDigito := sum * 10 % 11
