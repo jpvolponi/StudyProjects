@@ -35,17 +35,16 @@ func FalsoValido(cpf []int32) bool {
 	}
 	return resp
 }
-
-func ValidaCpf() bool {
-	var cpf string
+func ValidaCpf(cpf string) bool {
+	//var cpf string
 	var resp bool
-	fmt.Println("\nDigite o CPF.")
-	fmt.Scan(&cpf)
+	// fmt.Println("\nDigite o CPF.")
+	// fmt.Scan(&cpf)
 
-	//Converte string para silce de int32
+	//Converte string para slice de int32
 	cpfInt, erro := ConvInt(cpf)
 	if erro != nil {
-		fmt.Println("Erro de conversão:", erro)
+		fmt.Println(erro)
 	} else if FalsoValido(cpfInt) {
 		return false
 	} else {
