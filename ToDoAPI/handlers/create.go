@@ -31,7 +31,7 @@ func Create(w http.ResponseWriter, r *http.Request) {
 	} else {
 		resp = map[string]any{
 			"Erro":    false,
-			"Message": fmt.Sprintf("Todo inserido com sucesso! ID: %v", id),
+			"Message": fmt.Sprintf("ToDo inserido com sucesso! ID: %v", id),
 		}
 	}
 	w.Header().Add("Content-Type", "application/json")
